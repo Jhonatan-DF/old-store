@@ -5,7 +5,7 @@ body {
     overflow: hidden;
 }
 
-.menu nav {
+header nav {
     display: flex;
     width: 90vw;
     justify-content: space-between;
@@ -16,7 +16,7 @@ body {
     z-index: 3;
 }
 
-.menu .logo {
+header .logo {
     font-family: "Orbitron", sans-serif;
     font-size: 2rem;
     font-weight: 900;
@@ -24,22 +24,22 @@ body {
     text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
 }
 
-.menu ul {
+header nav ul {
     display: flex;
-    gap: 40px;
+    gap: 48px;
 }
 
 a {
     color: #ffffff;
 }
 
-.menu nav ul li {
+header nav ul li {
     position: relative;
     cursor: pointer;
     padding: 5px 0;
 }
 
-.menu nav ul li::after {
+header nav ul li::after {
     content: '';
     position: absolute;
     left: 0;
@@ -47,10 +47,11 @@ a {
     width: 0px;
     height: 2px;
     background-color: #00f7ff;
-    transition: ease-in-out 0.3s;
+    transition: all ease-in-out 0.3s;
+
 }
 
-.menu nav ul li:hover::after {
+header nav ul li:hover::after {
     width: 100%;
 }
 
@@ -90,17 +91,19 @@ a {
 }
 
 .item {
+    position: absolute;
     opacity: 0;
     inset: 0;
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1;
+    transform: translateX(100vw);
+    transition: transform 0.7s;
 }
 
 .active {
     opacity: 1;
+    transform: translateX(0);
 }
 
 .product-img {
@@ -117,6 +120,16 @@ a {
     max-width: 80%;
     max-height: 60%;
     filter: drop-shadow(0 0 30px rgba(0, 247, 255, 0.3));
+
+    transform: translate(200px);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s ease-in-out;
+    transition-delay: 0.5s;
+}
+
+.active .product-img img {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .content {
@@ -126,6 +139,7 @@ a {
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
+    z-index: 2;
 }
 
 .product-tag {
@@ -142,30 +156,65 @@ a {
     font-family: "Orbitron", sans-serif;
     line-height: 1.1;
     margin-bottom: 20px;
+    transform: translate(200px);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s ease-in-out;
+    transition-delay: 0.5s;
+}
+
+
+.active .product-name {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .description {
     font-size: 1.1rem;
     color: #b8b8d0;
     margin-bottom: 30px;
+    line-height: 1.6;
     max-width: 600px;
+    transform: translate(200px);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s ease-in-out;
+    transition-delay: 0.5s;
 }
 
-.item .content .botao {
-    padding: 20px 16px;
-    border-radius: 30px;
 
+
+.active .description {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.botao {
+    padding: 12px 10px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #00f7ff, #0066ff);
     color: #000000;
     font-size: 1rem;
     border: none;
     cursor: pointer;
     font-weight: 600;
-    transition: 0.5s;
+    transition: transform ease-in-out 0.6s, opacity 0.6s ease-in-out;
+    z-index: 1;
+
+    transform: translate(200px);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s ease-in-out;
+    transition-delay: 0.5s;
 }
 
-.item .content .botao:hover {
-    background-color: #b8b8d0;
-    border-color: aliceblue;
+
+.active .botao {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.botao:hover {
+    background: #1f1f3a;
+    z-index: 1;
+    color: #ffffff;
 }
 
 
@@ -181,6 +230,9 @@ a {
 }
 
 .arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 50px;
     height: 50px;
     border: none;
@@ -252,18 +304,21 @@ a {
     top: 10%;
     left: 10%;
 }
+
 .circle:nth-child(2) {
     width: 300px;
     height: 300px;
     top: 60%;
     left: 80%;
 }
+
 .circle:nth-child(3) {
     width: 150px;
     height: 150px;
     top: 20%;
     left: 50%;
 }
+
 .circle:nth-child(4) {
     width: 400px;
     height: 400px;
