@@ -6,9 +6,13 @@ const numberIndicador = document.querySelector('.numbers')
 const list = document.querySelector('.list')
 
 
+
+
+
 let active = 0
 const total = items.length
 let timer;
+
 
 
 function update(direction) {
@@ -34,7 +38,7 @@ function update(direction) {
     items[active].classList.add('active')
     dots[active].classList.add('active')
 
-    numberIndicador.textContent = String(active + 1).padStart(2,'0')
+    numberIndicador.textContent = String(active + 1).padStart(2, '0')
 }
 
 

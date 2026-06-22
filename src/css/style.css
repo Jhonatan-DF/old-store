@@ -5,6 +5,12 @@ body {
     overflow: hidden;
 }
 
+
+
+.menu.active {
+  display: block;
+}
+
 header nav {
     display: flex;
     width: 90vw;
